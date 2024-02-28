@@ -1,0 +1,99 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Container styles */
+.container {
+    width: 50%;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+/* Heading styles */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Form styles */
+input[type="text"],
+input[type="number"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Set background color to blue */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Checkbox styles */
+input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 10px;
+    list-style-type: none;
+}
+
+/* Info styles */
+.info p {
+    margin-bottom: 2%;
+}
+
+.info strong {
+    font-weight: bold;
+}
+
+.info table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.info th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.info th {
+    background-color: #f2f2f2;
+}
+
+/* Canvas styles */
+.graph {
+    display: block;
+    width: 100%; 
+    height: auto; 
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+}
