@@ -86,9 +86,6 @@ def LSTM_model(input_shape):
     model.add(LSTM(30))
     model.add(Dropout(.1))
     
-    # model.add(Flatten())
-    # model.add(Dense(25, activation='relu'))
-    # model.add(Flatten())
     model.add(Dense(1, activation='relu'))
     return model
 
