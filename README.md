@@ -8,7 +8,7 @@ This Python-based Bitcoin Forecast API provides forecasting for Bitcoin prices. 
 - [Usage](#usage)
 - [Testing](#testing)
 - [Contributing](#contributing)
-- 
+
 # Installation
 To use the Bitcoin Forecast API, follow these steps:
 
@@ -43,9 +43,8 @@ pip install -r requirements.txt
 
 # Usage
 
-## 1. Ensure you are in the project directory and your virtual environment is activated.
-
-## 2. Run the API server:
+1. Ensure you are in the project directory and your virtual environment is activated.
+2. Run the API server:
 ```sh
 python app
 ```
@@ -53,8 +52,8 @@ python app
 # Testing
 
 To run tests for the Bitcoin Forecast API:
-## 1. Ensure you are in the project directory and your virtual environment is activated.
-## 2. Run the tests using pytest:
+### 1. Ensure you are in the project directory and your virtual environment is activated.
+### 2. Run the tests using pytest:
 ```sh
 pytest
 ```
