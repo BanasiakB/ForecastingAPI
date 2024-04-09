@@ -52,8 +52,8 @@ python app
 # Testing
 
 To run tests for the Bitcoin Forecast API:
-### 1. Ensure you are in the project directory and your virtual environment is activated.
-### 2. Run the tests using pytest:
+1. Ensure you are in the project directory and your virtual environment is activated.
+2. Run the tests using pytest:
 ```sh
 pytest
 ```
