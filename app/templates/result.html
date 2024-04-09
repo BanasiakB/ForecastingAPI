@@ -13,7 +13,7 @@
     <div class="container">
         <h1>Forecast Results</h1>
         <div class="info">
-            <p><strong>Ticker:</strong> {{ ticker }}</p>
+            <p><strong>BTC-USD</strong></p>
             <p><strong>Time Step:</strong> {{ time_step }}</p>
             <p><strong>Simulation Time:</strong> {{ current_time }}</p>
             <!-- <p><strong>Methods:</strong> {{ methods | join(', ') }}</p> -->
@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for method, values in scores.items() %}
+                    {% for method, values in score.items() %}
                     <tr>
                         <td>{{ method }}</td>
                         <td>{{ values.result }}</td>
