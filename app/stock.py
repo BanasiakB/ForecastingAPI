@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.preprocessing import MinMaxScaler
 import keras
+from typing import Tuple
 
 TEST_SAMPLES = 50
 LEARNING_PERIOD = 50
@@ -12,18 +13,20 @@ LEARNING_PERIOD = 50
 class Stock:
     def __init__(self, time_step:str, predict:str) -> None:
         self.time_step = time_step
-        self.data = self.get_data()
+        self.data = self._get_data()
         self.predict = predict
         self.scaler = MinMaxScaler(feature_range=(0,1))
 
     def read_model(self, method: str):
+        if not method:
+            raise ValueError('Method was not provided')
         try:
             model = keras.models.load_model(f"app/models/BTC-USD_{method}_{self.predict}_{self.time_step}.keras")
         except ValueError:
             raise ValueError('Error occured during reading a model')
         return model
 
-    def prepare_data(self) -> tuple[np.ndarray, np.ndarray]:
+    def prepare_data(self) -> Tuple[np.ndarray, np.ndarray]:
         prices = self.data[-LEARNING_PERIOD-TEST_SAMPLES-1:][self.predict].values  
         y_test = prices[-TEST_SAMPLES:]
         
@@ -38,7 +41,7 @@ class Stock:
         X = np.reshape(X, (X.shape[0], X.shape[1], 1))
         return X, y_test
 
-    def forecast(self, methods: list) -> dict[dict]:
+    def forecast(self, methods: list) -> Tuple[dict, dict]:
         predictions = {}
         pred_score = {}
 
@@ -47,10 +50,9 @@ class Stock:
             model = self.read_model(method)
             y_pred = self.scaler.inverse_transform(model.predict(X))
             
-            score = {}
-            score["MAE"] = np.round(mean_absolute_error(y_pred[:-1], y_test), 5)
-            score["MSE"] = np.round(mean_squared_error(y_pred[:-1], y_test), 5)
-            score['result'] = np.round(float(y_pred[-1]), 5)
+            score = {"MAE": np.round(mean_absolute_error(y_pred[:-1], y_test), 5),
+                     "MSE": np.round(mean_squared_error(y_pred[:-1], y_test), 5),
+                     'result': np.round(float(y_pred[-1]), 5)}
 
             predictions[method] = self.combine_with_time(y_pred)
             pred_score[method] = score
@@ -61,7 +63,7 @@ class Stock:
         historical_data.index = historical_data.index
         return historical_data.to_dict()
 
-    def get_data(self) -> pd.DataFrame:
+    def _get_data(self) -> pd.DataFrame:
         data = yf.Ticker('BTC-USD').history(interval=self.time_step, period=self._max_period())
         if not len(data):
             raise ValueError('Error occured during downloading data.')
