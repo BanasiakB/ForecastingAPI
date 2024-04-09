@@ -11,9 +11,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Forecast Results</h1>
+        <h1>BTC-USD Forecast Results</h1>
         <div class="info">
-            <p><strong>BTC-USD</strong></p>
             <p><strong>Time Step:</strong> {{ time_step }}</p>
             <p><strong>Simulation Time:</strong> {{ current_time }}</p>
             <!-- <p><strong>Methods:</strong> {{ methods | join(', ') }}</p> -->
@@ -41,6 +40,8 @@
         
         </div>
         <div id="graph">{{ graph | safe }}</div>
+        <br>
+        <p>Our forecast API provides insights based on statistical models and historical data. However, we cannot guarantee its accuracy or reliability for decision-making purposes. Users acknowledge and accept the inherent risks and limitations of using the API and agree not to hold us liable for any losses incurred. Exercise caution and independent judgment when utilizing the forecast information. By accessing the API, users indemnify us from any claims arising from its use.</p>
         <br>
         <div class="buttons">
             <form action="/" method="GET">

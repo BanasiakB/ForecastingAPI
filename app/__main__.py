@@ -11,13 +11,12 @@ app.config['SECRET_KEY'] = 'Secret Key'
 def index():
     form = ForecastForm()
     if form.validate_on_submit():
-        ticker = form.ticker.data
         time_step = form.time_step.data
         predict_option = form.predict_option.data
         methods = form.methods.data
 
-        stock = Stock(ticker, time_step, predict_option)
-        forecasts, scores = stock.forecast(methods=methods)
+        stock = Stock(time_step, predict_option)
+        forecasts, score = stock.forecast(methods=methods)
         forecasts['historical data'] = stock.historical_data()
         
         graph_data = []
@@ -34,7 +33,8 @@ def index():
         graph = fig.to_html(full_html=False) 
 
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        return render_template('result.html', ticker=ticker, time_step=time_step,  current_time=current_time, graph=graph, scores=scores)
+        return render_template('result.html', time_step=time_step,  
+                               current_time=current_time, graph=graph, score=score)
     return render_template('index.html', form=form)
 
 

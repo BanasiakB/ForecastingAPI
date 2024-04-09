@@ -8,12 +8,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>Forecast Form</h1>
+        <h1>BTC-USD Forecast Form</h1>
         <form method="POST">
             {{ form.hidden_tag() }}
-            <div class="form-group">
-                {{ form.ticker.label }} {{ form.ticker(size=5) }}
-            </div>
             <div class="form-group">
                 {{ form.time_step.label }} {{ form.time_step() }}
             </div>
